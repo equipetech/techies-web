@@ -1,37 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# techies-web
 
-## Getting Started
+Bem-vindo ao **techies-web**! Um projeto Next.js inspirado no herói mais "popular" (leia-se: temido) dos jogos, **Techies**. Se você acha que a web está precisando de um pouco mais de emoção (e explosões inesperadas), você veio ao lugar certo!
 
-First, run the development server:
+## Começando a Aventura (ou armadilha?)
+
+Primeiro, **proceda com cautela** e execute o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado... se tiver coragem.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Você pode começar a editar a página modificando `app/page.tsx`. A página se autoatualiza enquanto você edita o arquivo. Mas cuidado: cada alteração pode ser uma nova "surpresa explosiva"!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Este projeto utiliza `next/font` para otimizar e carregar automaticamente a **Geist**, uma nova família de fontes da Vercel. Porque até as fontes merecem estar no clima "detonante" dos Techies.
 
-## Learn More
+## Aprenda Mais (Se Ousar)
 
-To learn more about Next.js, take a look at the following resources:
+Para aprender mais sobre Next.js (e talvez desarmar algumas minas pelo caminho), confira os seguintes recursos:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Documentação do Next.js](https://nextjs.org/docs) - descubra as funcionalidades e a API do Next.js, se sobreviver.
+- [Aprenda Next.js](https://nextjs.org/learn) - um tutorial interativo (prometemos que não há armadilhas... ou será que há?).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Você também pode dar uma olhada no [repositório do Next.js no GitHub](https://github.com/vercel/next.js/) - seu feedback e contribuições são bem-vindos (desde que não sejam... explosivas!).
 
-## Deploy on Vercel
+## Implantação na Vercel (Com Cuidado Redobrado)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A maneira mais fácil de implantar seu app Next.js é usar a Plataforma Vercel, dos criadores do Next.js. Mas lembre-se: até mesmo a implantação pode reservar algumas "surpresas".
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# web-front
+Confira nossa [documentação de implantação do Next.js](https://nextjs.org/docs/deployment) para mais detalhes. Mas fique atento — nunca se sabe onde os Techies podem ter escondido algo.
+
+---
+
+**Aproveite a jornada pelo techies-web, e que a sorte esteja sempre a seu favor!**
+
+<video class="_22nJ5nsfHDS2jEscPEne0-" poster="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.png" autoplay="" preload="auto" loop="" playsinline=""><source type="video/mp4; codecs=&quot;hvc1&quot;" src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.mov"><source type="video/webm" src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.webm?undefined"><img src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.png"></video>
