@@ -41,4 +41,5 @@ Confira nossa [documentação de implantação do Next.js](https://nextjs.org/do
 
 **Aproveite a jornada pelo techies-web, e que a sorte esteja sempre a seu favor!**
 
-<video class="_22nJ5nsfHDS2jEscPEne0-" poster="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.png" autoplay="" preload="auto" loop="" playsinline=""><source type="video/mp4; codecs=&quot;hvc1&quot;" src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.mov"><source type="video/webm" src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.webm?undefined"><img src="https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/techies.png"></video>
+![techies](https://github.com/user-attachments/assets/f930153a-02b1-4810-a741-b2069f7ceeb2)
+
