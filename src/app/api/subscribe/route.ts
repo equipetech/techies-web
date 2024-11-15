@@ -1,4 +1,4 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { SESClient, SendTemplatedEmailCommand } from '@aws-sdk/client-ses';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -28,27 +28,15 @@ export async function POST(request: Request) {
     const { email } = result.data;
 
     // Configuração do email
-    const command = new SendEmailCommand({
+    const command = new SendTemplatedEmailCommand({
       Source: process.env.SES_FROM_EMAIL,
       Destination: {
         ToAddresses: [email],
       },
-      Message: {
-        Subject: {
-          Data: 'Bem-vindo à lista de espera!',
-          Charset: 'UTF-8',
-        },
-        Body: {
-          Html: {
-            Data: `
-              <h1>Obrigado por se inscrever!</h1>
-              <p>Olá,</p>
-              <p>Agradecemos seu interesse! Você será notificado assim que tivermos novidades.</p>
-            `,
-            Charset: 'UTF-8',
-          },
-        },
-      },
+      Template: 'NagaleraWaitlist',
+      TemplateData: JSON.stringify({
+        email: email,
+      }),
     });
 
     await ses.send(command);

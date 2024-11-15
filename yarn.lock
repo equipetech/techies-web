@@ -272,7 +272,7 @@
     "@smithy/util-stream" "^3.3.0"
     tslib "^2.6.2"
 
-"@aws-sdk/credential-provider-ini@3.693.0":
+"@aws-sdk/credential-provider-ini@3.693.0", "@aws-sdk/credential-provider-ini@^3.693.0":
   version "3.693.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-ini/-/credential-provider-ini-3.693.0.tgz#b4557ac1092657660a15c9bd55e17c27f79ec621"
   integrity sha512-kvaa4mXhCCOuW7UQnBhYqYfgWmwy7WSBSDClutwSLPZvgrhYj2l16SD2lN4IfYdxARYMJJ1lFYp3/jJG/9Yk4Q==
