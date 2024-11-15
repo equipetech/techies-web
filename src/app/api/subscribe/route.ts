@@ -1,53 +1,66 @@
-import { EmailParams, MailerSend, Recipient, Sender } from 'mailersend';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 
-const mailerSend = new MailerSend({
-  apiKey: process.env.MAILERSEND_API_KEY!,
+const subscribeSchema = z.object({
+  email: z.string().email(),
+});
+
+// Cliente SES
+const ses = new SESClient({
+  region: process.env.AWS_REGION ?? 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
 });
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const body = await request.json();
 
-    if (!email) {
-      return NextResponse.json(
-        { message: 'Email é obrigatório' },
-        { status: 400 }
-      );
+    // Validação do input
+    const result = subscribeSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json({ message: 'Email inválido' }, { status: 400 });
     }
 
-    const sentFrom = new Sender(
-      process.env.MAILERSEND_FROM_EMAIL!,
-      'Na Galera!'
-    );
+    const { email } = result.data;
 
-    const template = {
-      template_id: process.env.MAILERSEND_TEMPLATE_ID as string,
-      variables: [
-        {
-          email: email,
+    // Configuração do email
+    const command = new SendEmailCommand({
+      Source: process.env.SES_FROM_EMAIL,
+      Destination: {
+        ToAddresses: [email],
+      },
+      Message: {
+        Subject: {
+          Data: 'Bem-vindo à lista de espera!',
+          Charset: 'UTF-8',
         },
-      ],
-    };
+        Body: {
+          Html: {
+            Data: `
+              <h1>Obrigado por se inscrever!</h1>
+              <p>Olá,</p>
+              <p>Agradecemos seu interesse! Você será notificado assim que tivermos novidades.</p>
+            `,
+            Charset: 'UTF-8',
+          },
+        },
+      },
+    });
 
-    const recipients = [new Recipient(email)];
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setSubject('Bem-vindo à lista de espera!')
-      .setTemplateId(template.template_id);
-
-    await mailerSend.email.send(emailParams);
+    await ses.send(command);
 
     return NextResponse.json(
       { message: 'Inscrito com sucesso!' },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Erro ao processar inscrição:', error);
+    console.error('Erro:', error);
     return NextResponse.json(
-      { message: 'Erro ao processar sua inscrição. Tente novamente.' },
+      { message: 'Erro ao processar sua inscrição.' },
       { status: 500 }
     );
   }

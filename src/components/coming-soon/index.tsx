@@ -7,6 +7,7 @@ import {
   TentTree,
 } from 'lucide-react';
 import Countdown from '../countdown';
+import WaitlistForm from '../form-waitlist.tsx';
 import ActivityIcon from './activity-icon';
 import BallsAnimated from './balls-animated';
 
@@ -64,7 +65,7 @@ const ComingSoonPage = () => {
             </button>
           </div> */}
 
-          {/* <WaitlistForm /> */}
+          <WaitlistForm />
         </div>
       </div>
     </div>
