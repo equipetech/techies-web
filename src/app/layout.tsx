@@ -14,8 +14,13 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Projeto X',
-  description: 'Projeto X',
+  title: {
+    template: '%s | Na Galera! 🎉',
+    default: 'Na Galera! 🎉',
+  },
+  description:
+    'Na Galera! onde você encontra sua galera, e compartilha suas experiências.',
+  authors: [{ name: 'DIV Tecnologia' }],
 };
 
 export default function RootLayout({
