@@ -3,8 +3,8 @@ import {
   Dumbbell,
   Handshake,
   MicVocal,
-  PartyPopper,
   TentTree,
+  ZapIcon,
 } from 'lucide-react';
 import Countdown from '../countdown';
 import WaitlistForm from '../form-waitlist.tsx';
@@ -28,9 +28,9 @@ const ComingSoonPage = () => {
         {/* Logo e Título */}
         <div className='space-y-4 mb-12'>
           <div className='flex items-center justify-center gap-3 mb-4'>
-            <PartyPopper className='w-12 h-12 text-orange-600' />
+            <ZapIcon className='w-12 h-12 text-orange-600' />
             <h1 className='text-6xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500  text-transparent bg-clip-text tracking-tighter'>
-              Na Galera!
+              Activ8!
             </h1>
           </div>
           <p className='text-lg text-orange-800 font-thin tracking-wide'>
