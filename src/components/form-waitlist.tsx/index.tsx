@@ -5,9 +5,23 @@ import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { Alert, AlertDescription } from '../ui/alert';
 
-export default function WaitlistForm() {
+interface WaitlistFormProps {
+  endpoint: string;
+  successMessage: string;
+  buttonLabel: string;
+  formTitle: string;
+}
+
+export default function WaitlistForm({
+  endpoint,
+  successMessage,
+  buttonLabel,
+  formTitle,
+}: WaitlistFormProps) {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const triggerConfetti = useCallback(() => {
@@ -63,7 +77,7 @@ export default function WaitlistForm() {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +107,7 @@ export default function WaitlistForm() {
       <form onSubmit={handleSubmit} className='space-y-4'>
         <div className='flex flex-col space-y-2'>
           <label htmlFor='email' className='text-sm font-medium'>
-            Inscreva-se para saber quando lançarmos!
+            {formTitle}
           </label>
           <div className='flex gap-2'>
             <input
@@ -115,7 +129,7 @@ export default function WaitlistForm() {
               {status === 'loading' ? (
                 <Loader2 className='w-5 h-5 animate-spin' />
               ) : (
-                'Inscrever'
+                buttonLabel
               )}
             </button>
           </div>
@@ -125,7 +139,7 @@ export default function WaitlistForm() {
           <Alert className='bg-green-50 border-green-200'>
             <CheckCircle2 className='h-4 w-4 text-green-600' />
             <AlertDescription className='text-green-600'>
-              Inscrição realizada com sucesso! Entraremos em contato em breve.
+              {successMessage}
             </AlertDescription>
           </Alert>
         )}

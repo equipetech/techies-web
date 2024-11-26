@@ -65,7 +65,12 @@ const ComingSoonPage = () => {
             </button>
           </div> */}
 
-          <WaitlistForm />
+          <WaitlistForm
+            endpoint='/api/email/newsletter'
+            successMessage='Inscrição realizada com sucesso! Entraremos em contato em breve.'
+            buttonLabel='Inscrever'
+            formTitle='Inscreva-se para saber quando lançarmos!'
+          />
         </div>
       </div>
     </div>
