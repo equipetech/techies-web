@@ -1,3 +1,5 @@
+import { AuthProvider } from '@/contexts/auth-context';
+import ReactQueryProvider from '@/providers/react-query-provider';
 import type { Metadata } from 'next';
 import { Montserrat_Alternates } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -29,8 +31,12 @@ export default function RootLayout({
       className={`${montserrat.className} h-full text-base antialiased`}
     >
       <body className='flex min-h-full flex-col'>
-        {children}
-        <Toaster richColors position='top-center' />
+        <ReactQueryProvider>
+          <AuthProvider>
+            {children}
+            <Toaster richColors position='top-center' />
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
