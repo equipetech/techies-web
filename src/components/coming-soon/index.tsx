@@ -54,17 +54,6 @@ const ComingSoonPage = () => {
 
         {/* Call to action */}
         <div className='max-w-md mx-auto space-y-6'>
-          {/* <div className='flex gap-2'>
-            <input
-              type='email'
-              placeholder='SEU EMAIL PARA NOTIFICAÇÃO'
-              className='flex-1 px-4 py-3 bg-teal-700/10 border-2 border-teal-600/30 rounded-lg text-white placeholder-teal-900 focus:outline-none focus:border-yellow-500 transition-all uppercase text-sm tracking-wider'
-            />
-            <button className='px-6 py-3 bg-teal-500 text-white font-bold rounded-lg hover:bg-teal-400 transition-all uppercase tracking-wider'>
-              Notificar
-            </button>
-          </div> */}
-
           <WaitlistForm
             endpoint='/api/email/newsletter'
             successMessage='Inscrição realizada com sucesso! Entraremos em contato em breve.'

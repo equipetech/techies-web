@@ -1,25 +1,20 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Montserrat_Alternates } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const montserrat = Montserrat_Alternates({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Activ8! ⚡',
-    default: 'Activ8! ⚡',
+    template: '%s | activ8',
+    default: 'activ8',
   },
   description:
-    'Activ8! onde você encontra sua galera, e compartilha suas experiências.',
+    'activ8! onde você encontra sua galera, e compartilha suas experiências.',
   authors: [{ name: 'DIV Tecnologia' }],
 };
 
@@ -29,11 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang='en'
+      className={`${montserrat.className} h-full text-base antialiased`}
+    >
+      <body className='flex min-h-full flex-col'>
         {children}
+        <Toaster richColors position='top-center' />
       </body>
     </html>
   );
