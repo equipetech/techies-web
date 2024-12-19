@@ -29,7 +29,7 @@ export default function NotFound() {
           movida.
         </p>
 
-        <Button className='bg-[#F84D69] hover:bg-[#ff1f62] text-white'>
+        <Button className='bg-[#F84D69] hover:bg-[#F84D69] text-white'>
           <Link href='/'>Voltar para a Página Inicial</Link>
         </Button>
       </main>

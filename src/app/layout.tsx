@@ -24,8 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={`${montserrat.className} antialiased`}>
-      <body>
+    <html
+      lang='en'
+      className={`${montserrat.className} h-full text-base antialiased`}
+    >
+      <body className='flex min-h-full flex-col'>
         {children}
         <Toaster richColors position='top-center' />
       </body>
