@@ -4,6 +4,7 @@ import { api } from '@/lib/axios';
 import { AuthResponse, SignInCredentials, User } from '@/types/auth';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { destroyCookie, setCookie } from 'nookies';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -38,12 +39,17 @@ export function useAuth() {
       return response.data;
     },
     onSuccess: (data) => {
+      setCookie(undefined, 'token', data.token, {
+        maxAge: 60 * 60 * 24 * 7, // 7 dias
+        path: '/',
+        // domain: 'activ8.com.br',
+        // secure: true,
+      });
+
       localStorage.setItem('token', data.token);
-      setUser(data.user);
       api.defaults.headers.Authorization = `Bearer ${data.token}`;
-      queryClient.setQueryData(['user'], data.user);
       toast.success('Olá, seja bem vindo!');
-      router.push('/dashboard');
+      router.replace('/dashboard');
     },
     onError: (error) => {
       console.error(error);
@@ -53,6 +59,7 @@ export function useAuth() {
 
   // Logout
   const signOut = useCallback(async () => {
+    destroyCookie(undefined, 'token');
     localStorage.removeItem('token');
     setUser(null);
     api.defaults.headers.Authorization = '';

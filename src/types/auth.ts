@@ -14,5 +14,5 @@ export interface SignInCredentials {
 
 export interface AuthResponse {
   token: string;
-  user: User;
+  user?: User;
 }

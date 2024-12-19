@@ -1,29 +1,22 @@
 import axios from 'axios';
+import { parseCookies } from 'nookies';
 
-export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getAPIClient(ctx?: any) {
+  const { token } = parseCookies(ctx);
 
-// Interceptors em ambiente client-side
-if (typeof window !== 'undefined') {
-  api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+  const api = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
-  api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (error.response?.status === 401) {
-        localStorage.removeItem('token');
-      }
-      return Promise.reject(new Error(error.message));
-    }
-  );
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return api;
 }
+
+export const api = getAPIClient();

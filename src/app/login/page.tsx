@@ -43,6 +43,7 @@ export default function SignUp() {
       email: data.email,
       senha: data.password,
     };
+
     signIn(payload);
   };
 

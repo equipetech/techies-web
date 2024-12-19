@@ -1,17 +1,24 @@
 'use client';
 
+import { useUser } from '@/hooks/use-user';
+import Link from 'next/link';
+
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, Users } from 'lucide-react';
-import Link from 'next/link';
 
 export default function Dashboard() {
+  const { user } = useUser();
+
+  const userName = user?.nome ?? 'Usuário';
+
   return (
     <>
       <main className='container  mx-auto px-4 py-8'>
         <h1 className='text-3xl font-bold text-gray-800 mb-6'>
-          Bem-vindo de volta, Usuário!
+          Bem-vindo de volta, <span className='text-[#F84D69]'>{userName}</span>
+          !
         </h1>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

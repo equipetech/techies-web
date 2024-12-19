@@ -7,18 +7,26 @@ import { useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useAuth } from '@/hooks/use-auth';
 import { useUser } from '@/hooks/use-user';
 import { Bell, LogOut, Search } from 'lucide-react';
+import { toast } from 'sonner';
 import { Skeleton } from '../ui/skeleton';
 
 export default function HeaderLogged() {
-  const { isLoading } = useUser();
+  const { user, isLoading } = useUser();
   const [searchQuery, setSearchQuery] = useState('');
+  const { signOut } = useAuth();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // Implement search functionality here
     console.log('Searching for:', searchQuery);
+  };
+
+  const handleSignOut = () => {
+    signOut();
+    toast.success('Você saiu com sucesso! Até mais!');
   };
 
   return (
@@ -56,12 +64,18 @@ export default function HeaderLogged() {
           {isLoading ? (
             <Skeleton className='w-10 h-10 rounded-full' />
           ) : (
-            <Avatar>
-              <AvatarImage src='/placeholder-avatar.jpg' alt='User' />
-              <AvatarFallback>UN</AvatarFallback>
-            </Avatar>
+            <>
+              <Avatar>
+                <AvatarImage
+                  src='https://activ8-public.s3.us-east-1.amazonaws.com/avatar-activ8.svg'
+                  alt='User'
+                />
+                <AvatarFallback>UN</AvatarFallback>
+              </Avatar>
+              {user && <span>{user?.nome}</span>}
+            </>
           )}
-          <Button variant='ghost' size='icon'>
+          <Button variant='ghost' size='icon' onClick={handleSignOut}>
             <LogOut className='h-5 w-5' />
             <span className='sr-only'>Sair</span>
           </Button>
