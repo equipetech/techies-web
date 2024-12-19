@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  videos: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'https://fps.cdnpk.net',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
