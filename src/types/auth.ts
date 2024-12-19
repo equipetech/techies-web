@@ -1,13 +1,15 @@
 export interface User {
   id: string;
-  name: string;
+  nome: string;
   email: string;
+  telefone: string;
+  localizacao: string;
   // outros campos do usuário
 }
 
 export interface SignInCredentials {
   email: string;
-  password: string;
+  senha: string;
 }
 
 export interface AuthResponse {

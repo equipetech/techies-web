@@ -34,13 +34,14 @@ export function useAuth() {
   // Mutation para login
   const signIn = useMutation({
     mutationFn: async (credentials: SignInCredentials) => {
-      const response = await api.post<AuthResponse>('/sessions', credentials);
+      const response = await api.post<AuthResponse>('/login', credentials);
       return response.data;
     },
     onSuccess: (data) => {
       localStorage.setItem('token', data.token);
       setUser(data.user);
       api.defaults.headers.Authorization = `Bearer ${data.token}`;
+      queryClient.setQueryData(['user'], data.user);
       toast.success('Olá, seja bem vindo!');
       router.push('/dashboard');
     },

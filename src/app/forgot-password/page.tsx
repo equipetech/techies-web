@@ -6,8 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import LeftSection from '@/components/LeftSection';
-import LogoMobile from '@/components/LogoMobile';
+import LeftSection from '@/components/left-section-login';
+import LogoMobile from '@/components/logo-mobile';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 

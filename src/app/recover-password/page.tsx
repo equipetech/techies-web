@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 
-import LeftSection from '@/components/LeftSection';
-import LogoMobile from '@/components/LogoMobile';
+import LeftSection from '@/components/left-section-login';
+import LogoMobile from '@/components/logo-mobile';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

@@ -8,8 +8,8 @@ import { z } from 'zod';
 
 import { useAuthContext } from '@/contexts/auth-context';
 
-import LeftSection from '@/components/LeftSection';
-import LogoMobile from '@/components/LogoMobile';
+import LeftSection from '@/components/left-section-login';
+import LogoMobile from '@/components/logo-mobile';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -39,7 +39,11 @@ export default function SignUp() {
   const { signIn, isLoading } = useAuthContext();
 
   const onSubmit = async (data: LoginFormValues) => {
-    signIn(data);
+    const payload = {
+      email: data.email,
+      senha: data.password,
+    };
+    signIn(payload);
   };
 
   return (
